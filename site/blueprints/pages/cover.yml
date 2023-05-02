@@ -1,0 +1,38 @@
+title: Cover
+
+columns:
+  main:
+    width: 2/3
+    sections:
+      fields:
+        type: fields
+        fields:
+          headCouv:
+            label: Cover
+            type: headline
+          titleCouv:
+            label: Title
+            type: text
+          imageCouv:
+            label: Image
+            type: files
+            multiple: false
+          headBack:
+            label: Back
+            type: headline
+          back: 
+            label: Size of the back (in mm)
+            type: number
+          lastCouv:
+            label: Back cover
+            type: headline
+          summary: 
+            label: Summary
+            type: textarea
+  sidebar:
+    width: 1/3
+    sections:
+      files:
+        label: Images / Files
+        type: files
+

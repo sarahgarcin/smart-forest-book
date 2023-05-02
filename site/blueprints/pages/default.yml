@@ -1,0 +1,41 @@
+title: Chapter
+
+columns:
+  main:
+    width: 2/3
+    sections:
+      fields:
+        type: fields
+        fields:
+          subtitle: 
+            label: Subtitle
+            type: text
+          pics: 
+            label: Pictures
+            type: files
+          summary: 
+            label: Table of contents
+            type: structure
+            fields:
+              title: 
+                label: Title
+                type: text
+          text: 
+            label: Content
+            type: blocks
+            fieldsets:
+              - heading
+              - text
+              - list
+              - gallery
+              - image
+          sources:
+            label: Sources
+            type: list
+  sidebar:
+    width: 1/3
+    sections:
+      files:
+        label: Images
+        type: files
+

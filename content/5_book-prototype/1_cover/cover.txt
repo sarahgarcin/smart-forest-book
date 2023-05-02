@@ -1,0 +1,17 @@
+Title: Cover
+
+----
+
+Titlecouv: Book prototype
+
+----
+
+Imagecouv: 
+
+----
+
+Summary: 
+
+----
+
+Uuid: A0Nw7n2nk6WI1pC6

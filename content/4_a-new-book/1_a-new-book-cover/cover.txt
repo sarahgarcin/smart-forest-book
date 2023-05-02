@@ -1,0 +1,21 @@
+Title: A new book cover
+
+----
+
+Titlecouv: Smart Forest Atlas
+
+----
+
+Imagecouv: 
+
+----
+
+Back: 30
+
+----
+
+Summary: The Smart Forests Atlas is a research platform developed through the Smart Forests research project, which investigates the social-political impacts of digital technologies that monitor and govern forest environments. Our research project considers how forests and technologies are co-constituted. Rather than advocate for smartness, we question how and why forests are becoming technologically optimised to address environmental change.
+
+----
+
+Uuid: RLkPacQD1YHN29Rt

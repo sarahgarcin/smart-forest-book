@@ -1,0 +1,25 @@
+Title: Introduction
+
+----
+
+Subtitle: 
+
+----
+
+Pics: 
+
+----
+
+Summary: 
+
+----
+
+Text: [{"content":{"text":"<p>The Forest Ecology and Conservation Group (or Coomes Lab) is a team of researchers in the Conservation Research Institute and the Department of Plant Sciences at the University of Cambridge. The group uses high-resolution remote sensing to understand how forests are responding to global environmental change, with projects exploring forest biodiversity, conservation, and ecological dynamics. Research from the group also contributes to the University of Cambridge Centre for Earth Observation.<\/p>"},"id":"09cf92a3-ee8c-4e15-9bb7-cfa6e22cd7dc","isHidden":false,"type":"text"}]
+
+----
+
+Sources: 
+
+----
+
+Uuid: tSDzDIxbWLCuq8BQ

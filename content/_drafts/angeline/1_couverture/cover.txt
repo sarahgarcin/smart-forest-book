@@ -1,0 +1,21 @@
+Title: Couverture
+
+----
+
+Titlecouv: Le titre de mon livre
+
+----
+
+Imagecouv: 
+
+----
+
+Back: 10
+
+----
+
+Summary: le texte de la 4ème
+
+----
+
+Uuid: LIGZmKxgLBfhMrFY

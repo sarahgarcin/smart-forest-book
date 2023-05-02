@@ -1,0 +1,10 @@
+title: Book
+
+sections:
+  fields:
+    label: Content
+    type: pages
+    help: Create a new book, add a cover and an inside page
+    template: 
+      - cover
+      - inside

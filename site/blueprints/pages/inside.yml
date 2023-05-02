@@ -1,0 +1,12 @@
+title: Inside
+
+sections:
+  fields:
+    label: Chapitres
+    type: pages
+    template: 
+      - default
+      - existing
+      - story
+      - logbook
+
