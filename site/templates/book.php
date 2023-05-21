@@ -3,13 +3,23 @@
 <?php $chapters = $page->children()->filterBy('template', 'inside')->children()->listed();?>
 
 <div class="cover">
+	<div id="pixels-grid">
+		<div id="pixels-grid-inner"></div>
+	</div>
+	<!-- <canvas id="generated-image-for-cover" width=576 height=864></canvas> -->
+	<div id="authors-index"></div>
 	<h1><?= $coverPage->titleCouv() ?></h1>
+	<div id="book-index"></div>
 </div>
 <div class="white-page"></div>
 <div class="title-page">
 	<h1><?= $coverPage->titleCouv() ?></h1>
 </div>
-
+<div class="white-page"></div>
+<div class="toc-page">
+	<h1>Table of contents</h1>
+	<section id="table-of-contents"></section>
+</div>
 <?php foreach($chapters as $chapter):?>
 	<div class="chapter-left-page">
 		<?php if($chapter->link()->isNotEmpty()):?>
@@ -33,14 +43,15 @@
 			    	<img src="<?= $story->cover() ?>" alt="">
 			    </figure> -->
 			    <h1><?= $story->title() ?></h1>
-			    <p class="label"><?= $story->label() ?></p>
+			    <p class="date-added">Added <?= date('m/d/Y', $logbook->added()->toDate())?></p>
+			    <p class="label"><span class="chapter-number"><?= $chapter->num()?></span><span class="icon"><img src="<?= $site->url()?>/assets/stories.svg"></span><?= $story->label() ?></p>
 			    <div class="meta">
 				    <div class="contributors">
 				    	<?php foreach($story->contributors() as $contributors):?>
 					    	<h5>Contributors</h5>
 					    	<ul>
 					    	<?php foreach($contributors as $contributor):?>
-									<li><?= $contributor->first_name ?> <?= $contributor->last_name ?></li>
+									<li class="author-index" data-book-index="<?= $contributor->first_name ?> <?= $contributor->last_name ?>"><?= $contributor->first_name ?> <?= $contributor->last_name ?></li>
 					    	<?php endforeach;?>
 					    	</ul>
 				    	<?php endforeach ?>
@@ -62,7 +73,7 @@
 				    	<ul>
 					    <?php foreach($story->tags() as $tags):?>
 					    	<?php foreach($tags as $tag):?>
-					    		<li><?= $tag ?></li> 
+					    		<li class="book-index" data-book-index="<?= $tag ?>"><?= $tag ?></li> 
 					    	<?php endforeach ?>
 					    <?php endforeach ?>
 					  	</ul>
@@ -98,7 +109,8 @@
 			<?php elseif($chapter->intendedTemplate() == "logbook"):?>
 				<?php foreach ($chapter->children() as $logbook): ?>
 			    <h1><?= $logbook->title() ?></h1>
-			    <p class="label"><?= $logbook->label() ?></p>
+			    <p class="date-added">Added <?= date('m/d/Y', $logbook->added()->toDate())?></p>
+			    <p class="label"><span class="chapter-number"><?= $chapter->num()?></span><span class="icon"><img src="<?= $site->url()?>/assets/logbooks.svg"></span><?= $logbook->label() ?></p>
 			    <!-- fetch article tags -->
 			    <div class="meta">
 				    <div class="contributors">
@@ -106,7 +118,7 @@
 					    	<h5>Contributors</h5>
 					    	<ul>
 					    	<?php foreach($contributors as $contributor):?>
-									<li><?= $contributor->first_name ?> <?= $contributor->last_name ?></li>
+									<li class="author-index" data-book-index="<?= $contributor->first_name ?> <?= $contributor->last_name ?>"><?= $contributor->first_name ?> <?= $contributor->last_name ?></li>
 					    	<?php endforeach;?>
 					    	</ul>
 				    	<?php endforeach ?>
@@ -117,7 +129,7 @@
 				    	<ul>
 					    <?php foreach($logbook->tags() as $tags):?>
 					    	<?php foreach($tags as $tag):?>
-					    		<li><?= $tag ?></li> 
+					    		<li class="book-index" data-book-index="<?= $tag ?>"><?= $tag ?></li> 
 					    	<?php endforeach ?>
 					    <?php endforeach ?>
 					  	</ul>

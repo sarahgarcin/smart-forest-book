@@ -6,8 +6,16 @@
 
 ## TO DO
 
+### Now
+- regarder dans l'api si on peut avoir accès aux articles par tags
+- Tester depuis 0 la réalisation d'un livre
+
+### Design (urgent)
+- ?? - Story : les images de couverture => Angeline a testé avec un effet "pixellisation/framgentation" 
+  +  mais comment automatiser ? 
+  +  question de la taille de l'image …  
+
 ### Code
-- Impossible d'accèder à tout le contenu des logbooks via l'API
 - tester l'intégration d'image à partir de youtube 
   + pour l'instant c'est compliqué, je n'ai que le lien d'embed
   + essayer de récupérer le titre de la vidéo 
@@ -26,7 +34,6 @@
 
 
 ### Design
-- Cover : à designer
 - Réfléchir à comment on intègre la carte dans le book
   + comment on créer une double navigation comme dans GRAPHIC DESIGN IN THE POST-DIGITAL AGE
   + La carte peut devenir un sommaire = je recrée une carte à partir de la geolocalisation des éléments du livre avec le numéro de page 
@@ -34,6 +41,10 @@
 
 
 ## Questions
+- Je ne peux pas accèder à la donnée qui dit quand l'article a été modifié
+- Demander à Jennifer si c'est possible dans l'API d'avoir un classement par tags
+
+## Questions Posées
 - Je n'arrive pas à avoir les contenus des logbooks, j'ai seulement accès à la description mais pas aux articles / sous pages des logbooks
 - Comment faire quand il y a une vidéo ? 
 - Quelles impressions ? Quels papiers ? Quelle reliure ?
@@ -53,6 +64,12 @@
 - Contributors 
 
 ## Done
+- ok - Cover : à designer
+- ok - Version web / print
+- ok - ajouter un listing des livres sur la page d'accueil
+- ok - ajouter du grand fond 
+- ok - Ligne de méta data : Je me suis basée sur 4 colonnes et si possible une vide pour espacer le contriutors des tags. A voir si c'est possible.
+- ok - Impossible d'accèder à tout le contenu des logbooks via l'API
 - ok - Faire fonctionner les images dans "existing"
 - ok - Créer la possibilité d'avoir plusieurs livres (book) dans kirby
 - ok - Avoir la possibilité de dupliquer un livre (book) [la fonction existe déjà dans kirby]

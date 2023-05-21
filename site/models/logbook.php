@@ -12,7 +12,7 @@ class LogbookPage extends Page
         $request = Remote::get('https://atlas.smartforests.net/api/v2/pages/find/?html_path='. $htmlpage);
         if ($request->code() === 200) {
             $results = $request->json(false);
-            // print_r($results);
+            //print_r($results);
             $id = $results->id;
             // print($id);
             $request_children = Remote::get('https://atlas.smartforests.net/api/v2/pages/?type=logbooks.LogbookEntryPage&fields=*&child_of='.$id);
@@ -34,6 +34,7 @@ class LogbookPage extends Page
                 'type'     => $results->meta->type,
                 'description' => $results->description,
                 'articles'  => $results_children->items,
+                'added' => $results->meta->first_published_at,
                 // 'text'  => $results->body,
                 // 'text'     => $results->body,
                 // 'headline' => $existing->headline,

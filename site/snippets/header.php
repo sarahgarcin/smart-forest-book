@@ -1,13 +1,20 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title><?= $site->title() ?></title>
 	
-	<?= css("assets/preview.css")?>
+	<?php if(!$page->isHomePage() && $page->intendedTemplate() !="web"):?>
+		<?= css("assets/preview.css")?>
+	<?php endif;?>
 	<?= css("assets/style.css")?>
-	<?= js("assets/paged.polyfill.js")?>
-	<?= js("assets/script.js")?>
+	<?= css("assets/web.css")?>
+	<?php if(!$page->isHomePage() && $page->intendedTemplate() !="web"):?>
+		<?= js("assets/paged.polyfill.js")?>
+		<?= js("assets/script.js")?>
+	<?php else:?>
+		<?= js("assets/script-web.js")?>
+	<?php endif?>
 </head>
-<body class="<?php echo $page->template()?>">
+<body class="<?php echo $page->intendedTemplate()?>">

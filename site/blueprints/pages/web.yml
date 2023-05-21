@@ -1,0 +1,8 @@
+title: Book web version
+
+sections:
+  fields:
+    label: Info
+    type: info
+    text: |
+      Web version

@@ -1,0 +1,96 @@
+@font-face {
+    font-family: 'marr';
+    src: url('fonts/marrsans-regular.woff2') format('woff2'),
+        url('fonts/marrsans-regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* --------- Variable ---------- */
+
+:root{
+--green : rgb(0, 100, 61);
+--yellow: rgb(251, 244, 190);
+--grey: rgb(18, 18, 18);
+--titlefont: "Monaco", monospace;
+--textfont: "marr", sans-serif;
+--textsizeweb : 1em;
+}
+
+body.web{
+	font-size: 20px;
+}
+
+body.web header {
+	padding: 10px 10px 10px 20px;
+	margin-bottom: 50px;
+	width: 18%;
+	position: fixed; 
+	left: 0;
+	top: 20px;
+}
+
+
+body.web header h1{
+	font-size: 1.5em;
+}
+
+body.web #toc{
+	font-size: 1em;
+	margin-top: 20px;
+}
+
+body.web #toc #toc-heading{
+	border-bottom: 1px solid var(--green);
+	color: var(--green);
+	margin-bottom: 20px;
+}
+
+body.web #toc li{
+	list-style: none;
+	margin-bottom: 10px;
+}
+
+body.web #toc li a{
+	color: var(--green;)
+}
+
+
+body.web main{
+	max-width: 680px;
+	margin:auto;
+	margin-top: 30px;
+}
+
+body.web main .chapter {
+	margin-bottom: 50px;
+	padding-bottom: 50px;
+	border-bottom: 1px solid var(--green);
+}
+
+body.web main .logbook-content p, 
+body.web main .story-content p,
+body.web .content p{
+	font-size: var(--textsizeweb);
+}
+
+body.web .logbook figure{
+	width: 100%;
+}
+
+body.web figcaption p, body.web figcaption{
+	font-size: 0.75em;
+}
+
+body.web .chapter .content{
+	margin-top: 0;
+}
+
+
+
+
+
+
+
+
