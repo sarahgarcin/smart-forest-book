@@ -13,6 +13,9 @@ columns:
           titleCouv:
             label: Title
             type: text
+          version:
+            label: Date and Version
+            type: text
           imageCouv:
             label: Image
             type: files

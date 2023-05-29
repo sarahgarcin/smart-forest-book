@@ -1,3 +1,19 @@
+//  ----------------- AUTHORS PAGE ------------------
+// class createAuthorsPage extends Paged.Handler {
+//   constructor(chunker, polisher, caller) {
+//     super(chunker, polisher, caller);
+//   }
+
+//   beforeParsed(content){ 
+    
+ 
+//   }
+// }
+
+// Paged.registerHandlers(createAuthorsPage);
+
+
+
 //  ----------------- COVER IMAGE ------------------
 class generateCover extends Paged.Handler {
   constructor(chunker, polisher, caller) {
@@ -5,56 +21,42 @@ class generateCover extends Paged.Handler {
   }
 
   beforeParsed(content){ 
-    var pixelsGrid = content.getElementById('pixels-grid-inner');
+    // generateGrid(content, id of the div to draw the grid in)
+    generateGrid(content, "pixels-grid-inner");
+    generateGrid(content, "backcover-pixels-grid-inner");
+  }
+}
 
-    var sectionHeight = 864;
-    var sectionWidth = 576;
+function generateGrid(content, el){
+  var pixelsGrid = content.getElementById(el);
 
-    // create canvas element
-    // var canvas = document.createElement("canvas");
-    // canvas.classList.add("canvas");
-    // canvas.classList.add("js-canvas");
-    // canvas.width = sectionWidth;
-    // canvas.height = sectionHeight;
-    // pixelsGrid.append(canvas);
-  
+  var sectionHeight = 864;
+  var sectionWidth = 576;
 
-    // var context = canvas.getContext("2d");
+  // define y axis
+  var yAxis = 0;
 
-    // define y axis
-    var yAxis = 0;
+  // define width and height of squares
+  var wh = 30;
 
-    // define width and height of squares
-    var wh = 30;
+  // while the y axis is less than the section height
+  while (yAxis <= sectionHeight){
+    // draw squares along the x axis
+    for (var xAxis = 0; xAxis <= sectionWidth; xAxis += wh) {
+       var tile = document.createElement("div");
+       tile.classList.add("tile");
+       tile.style.position = "absolute";
+       tile.style.top = yAxis + "px";
+       tile.style.left = xAxis + "px";
+       tile.style.width = wh + "px";
+       tile.style.height = wh + "px";
+       tile.style.background = colorPicker();
+       pixelsGrid.append(tile);
 
-    // while the y axis is less than the section height
-    while (yAxis <= sectionHeight)
-    {
-      // draw squares along the x axis
-        for (var xAxis = 0; xAxis <= sectionWidth; xAxis += wh) {
-           var tile = document.createElement("div");
-           tile.classList.add("tile");
-           tile.style.position = "absolute";
-           tile.style.top = yAxis + "px";
-           tile.style.left = xAxis + "px";
-           tile.style.width = wh + "px";
-           tile.style.height = wh + "px";
-           tile.style.background = colorPicker();
-           pixelsGrid.append(tile);
-
-          // // random color styles
-          // context.fillStyle = colorPicker();
-          
-          // // context.moveTo(x, y);
-          // context.moveTo(xAxis, 0);
-
-          // //context.rect(xAxis, yAxis, wh, wh);
-          // context.fillRect(xAxis, yAxis, wh, wh);
-        }
-
-        // move the y axis down to the next row
-        yAxis += wh;
     }
+
+      // move the y axis down to the next row
+      yAxis += wh;
   }
 }
 
@@ -67,18 +69,45 @@ function colorPicker(){
     'rgb(0, 100, 61)',
     'rgb(0, 100, 61)',
     'rgb(0, 100, 61)',
-    'rgb(0, 112, 32)',
-    'rgb(0, 112, 32)',
-    'rgb(0, 112, 32)',
-    'rgb(25, 145, 0)',
-    'rgb(25, 145, 0)',
-    'rgb(25, 145, 0)',
-    'rgb(25, 145, 0)',
-    'rgb(69, 173, 0)',
-    'rgb(142, 197, 0)',
+    'rgb(0, 100, 61)',
+    'rgb(0, 100, 61)',
+    'rgb(0, 100, 61)',
+    'rgb(0, 100, 61)',
+    'rgb(88, 157, 134)',
+    'rgb(88, 157, 134)',
+    'rgb(88, 157, 134)',
+    'rgb(88, 157, 134)',
+    'rgb(184, 209, 200)',
+    'rgb(184, 209, 200)',
+    'rgb(184, 209, 200)',
+    // 'rgb(240, 246, 243)',
+    // 'rgb(142, 197, 0)',
     // 'rgb(197, 220, 0)',
     // 'rgb(255, 221, 50)'
   );
+  // var items = Array(
+  //   'rgb(0, 100, 61)',
+  //   'rgb(0, 100, 61)',
+  //   'rgb(0, 100, 61)',
+  //   'rgb(0, 100, 61)',
+  //   'rgb(0, 100, 61)',
+  //   'rgb(0, 100, 61)',
+  //   'rgb(0, 100, 61)',
+  //   'rgb(0, 100, 61)',
+  //   'rgb(0, 100, 61)',
+  //   'rgb(0, 100, 61)',
+  //   'rgb(0, 112, 32)',
+  //   'rgb(0, 112, 32)',
+  //   'rgb(0, 112, 32)',
+  //   'rgb(25, 145, 0)',
+  //   'rgb(25, 145, 0)',
+  //   'rgb(25, 145, 0)',
+  //   'rgb(25, 145, 0)',
+  //   'rgb(69, 173, 0)',
+  //   // 'rgb(142, 197, 0)',
+  //   // 'rgb(197, 220, 0)',
+  //   // 'rgb(255, 221, 50)'
+  // );
   var item  = items[Math.floor(Math.random()*items.length)];
   return item;
 }
@@ -195,7 +224,7 @@ function createIndex(config){
         
         if(config.randomPos){
           let marginLeft = getRandomNumber(10, 3000/newArrayIndex.length);
-          let marginTop = getRandomNumber(20, 400/newArrayIndex.length);
+          let marginTop = getRandomNumber(20, 1000/newArrayIndex.length);
 
           indexNewLi.style.marginTop = marginTop + "px";
           indexNewLi.style.marginLeft = marginLeft + "px";
@@ -503,13 +532,14 @@ function createToc(config){
     let tocUl = document.createElement("ul");
     tocUl.id = "list-toc-generated";
     tocElementDiv.appendChild(tocUl); 
+    console.log(tocElementDiv);
 
     // add class to all title elements
     let tocElementNbr = 0;
     for(var i= 0; i < titleElements.length; i++){
         
         let titleHierarchy = i + 1;
-        let titleElement = content.querySelectorAll(titleElements[i]);  
+        let titleElement = content.querySelectorAll(titleElements[i]);
 
 
         titleElement.forEach(function(element) {

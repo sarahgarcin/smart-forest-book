@@ -1,0 +1,8 @@
+title: Authors
+
+sections:
+  fields:
+    label: Info
+    type: info
+    text: |
+      Create authors page. Page is generated automatically from articles authors.

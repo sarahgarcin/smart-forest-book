@@ -87,6 +87,13 @@ body.web .chapter .content{
 	margin-top: 0;
 }
 
+body.web .logbook h2{
+	font-size: 1.5em;
+	margin-top: 40px;
+	border-top: 1px dotted #000;
+	padding-top: 40px;
+}
+
 
 
 

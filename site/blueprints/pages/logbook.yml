@@ -17,6 +17,9 @@ columns:
               title: 
                 label: Title
                 type: text
+          ajustements: 
+            label : Ajustements
+            type: text
           link: 
             label: Link of the article
             type: text

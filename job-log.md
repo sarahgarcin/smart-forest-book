@@ -1,27 +1,35 @@
 # Job log
 
+- Préparer la réunion de demain (questions)
 
 ## BUG(s)
-- BUG : quand je créer un existing -> ça bug à cause du model
+- ok - BUG : quand je créer un existing -> ça bug à cause du model
+- BUG : quand je veux supprimer une page type logbook ou story
 
 ## TO DO
 
 ### Now
-- regarder dans l'api si on peut avoir accès aux articles par tags
+- ok - Changer la couleur de la couv (plus proche des couleur de la carte)
+- ok - Faire un template type intro (voir design angeline)
+- ok - Faire un template type page (crédits ou autre -- genre logbook)
+- ok - ajouter page about the authors
+- ok - ajouter page crédits 
+- ok - ajouter back cover (à voir ce qu'on met dessus)
+- ok - Ajouter carte page de gauche début des stories et logbooks + tester avec box shadow
+- Les numéros des articles doient être par article et non pas tous les chapitres (trouver comment faire…)
+- Sommaire ajouter : pastilles numéro + icone, auteur
 - Tester depuis 0 la réalisation d'un livre
-
-### Design (urgent)
-- ?? - Story : les images de couverture => Angeline a testé avec un effet "pixellisation/framgentation" 
-  +  mais comment automatiser ? 
-  +  question de la taille de l'image …  
+- Cleaner l'interface (blueprints etc.)
+- Faire fonctionner la page "about the authors", comment faire pour que la page se génère automatiquement à partir de la page auteur du site ? J'ai tester en js et j'ai un problème de CORS… 
 
 ### Code
+- Micro-typographie
 - tester l'intégration d'image à partir de youtube 
   + pour l'instant c'est compliqué, je n'ai que le lien d'embed
   + essayer de récupérer le titre de la vidéo 
 - Cover : ajouter la possibilité d'ajuster la largeur du dos
   + j'ai essayé plein de choses et je n'arrive pas à faire passer la variable vers le pagedjs
-- Général : faire un template book pour avoir un aperçu général du bouquin (avec cover et back-cover)
+- ok - Général : faire un template book pour avoir un aperçu général du bouquin (avec cover et back-cover)
 - Faire des calculs ligne de base pour que tout soit aligné
 - Faire fonctionner smartypants
 - Filtering the content by tags 
@@ -30,7 +38,7 @@
 - Create a book by tag ? or by cluster of tags ?
 - Also having la possibilité de choisir la langue --> filtering by langage
 - Développer les templates (voir ci-dessous) - à partir des articles sur le site
-- Avoir la possibilité de publier une version web / html du livre
+- ok - Avoir la possibilité de publier une version web / html du livre
 
 
 ### Design
@@ -41,8 +49,10 @@
 
 
 ## Questions
-- Je ne peux pas accèder à la donnée qui dit quand l'article a été modifié
-- Demander à Jennifer si c'est possible dans l'API d'avoir un classement par tags
+- sent - Je ne peux pas accèder à la donnée qui dit quand l'article a été modifié
+- sent - Demander à Jennifer si c'est possible dans l'API d'avoir un classement par tags
+- sent - problème avec des titres mal formatés
+- Que met-on sur le back-cover ? 
 
 ## Questions Posées
 - Je n'arrive pas à avoir les contenus des logbooks, j'ai seulement accès à la description mais pas aux articles / sous pages des logbooks

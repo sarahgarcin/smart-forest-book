@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title><?= $site->title() ?></title>
+	<title><?= $site->title() ?> | <?= $page->title() ?></title>
 	
 	<?php if(!$page->isHomePage() && $page->intendedTemplate() !="web"):?>
 		<?= css("assets/preview.css")?>

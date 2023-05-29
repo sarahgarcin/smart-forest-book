@@ -24,26 +24,17 @@ class LogbookPage extends Page
 
         $pages[] = [
             'slug'     => $results->meta->slug,
-            'template' => 'story',
-            'model'    => 'story',
+            'template' => 'logbook',
+            'model'    => 'logbook',
             'content'  => [
                 'title'    => $results->title,
-                'label'     => $results->label,
-                'tags'     => $results->tags,
-                'contributors' => $results->contributors,
-                'type'     => $results->meta->type,
-                'description' => $results->description,
-                'articles'  => $results_children->items,
-                'added' => $results->meta->first_published_at,
-                // 'text'  => $results->body,
-                // 'text'     => $results->body,
-                // 'headline' => $existing->headline,
-                // 'byline'   => $existing->byline,
-                // 'summary'  => $existing->summary_short,
-                // 'date'     => $existing->publication_date,
-                // 'link'     => $existing->link->url,
-                // 'linkText' => $existing->link->suggested_link_text,
-                // 'cover'    => $existing->multimedia->src
+                'label'     => $results->label ?? 'default',
+                'tags'     => $results->tags ?? 'default',
+                'contributors' => $results->contributors ?? 'default',
+                'type'     => $results->meta->type ?? 'default',
+                'description' => $results->description ?? 'default',
+                'articles'  => $results_children->items ?? 'default',
+                'added' => $results->meta->first_published_at ?? 'default',
             ]
         ];
 

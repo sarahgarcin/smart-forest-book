@@ -1,0 +1,21 @@
+Title: Test
+
+----
+
+Pics: 
+
+----
+
+Summary: 
+
+----
+
+Ajustements: -1
+
+----
+
+Link: /logbooks/fpinnovations-forestry-40/
+
+----
+
+Uuid: PuW4FzTrENEhBWo7

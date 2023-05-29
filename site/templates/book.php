@@ -3,19 +3,26 @@
 <?php $chapters = $page->children()->filterBy('template', 'inside')->children()->listed();?>
 
 <div class="cover">
-	<div id="pixels-grid">
+	<div class="pixels-grid">
 		<div id="pixels-grid-inner"></div>
 	</div>
 	<!-- <canvas id="generated-image-for-cover" width=576 height=864></canvas> -->
 	<div id="authors-index"></div>
 	<h1><?= $coverPage->titleCouv() ?></h1>
-	<div id="book-index"></div>
+	<h2><span>Smart</span><span>Forests</span><span>Book</span></h2>
+	<p class="date-and-version"><?= $coverPage->version() ?></p>
 </div>
 <div class="white-page"></div>
 <div class="title-page">
 	<h1><?= $coverPage->titleCouv() ?></h1>
+	<div id="book-index"></div>
 </div>
-<div class="white-page"></div>
+<!-- <div class="white-page"></div> -->
+<div class="map-page">
+	<figure>
+		<img src="<?= $site->url()?>/assets/map.png" alt="">
+	</figure>
+</div>
 <div class="toc-page">
 	<h1>Table of contents</h1>
 	<section id="table-of-contents"></section>
@@ -23,6 +30,12 @@
 <?php foreach($chapters as $chapter):?>
 	<div class="chapter-left-page">
 		<?php if($chapter->link()->isNotEmpty()):?>
+			<!-- Ajouter la carte (fake pour le moment) -->
+			<?php if($chapter->hasImages()): ?>
+				<figure class="image-map">
+				  <img src="<?= $chapter->images()->first()->url() ?>" alt="">
+				</figure>
+			<?php endif;?>
 			<!-- /////// S T O R Y  /////// -->
 			<?php if($chapter->intendedTemplate() == "story"):?>
 				<?php foreach ($chapter->children() as $story): ?>
@@ -43,7 +56,7 @@
 			    	<img src="<?= $story->cover() ?>" alt="">
 			    </figure> -->
 			    <h1><?= $story->title() ?></h1>
-			    <p class="date-added">Added <?= date('m/d/Y', $logbook->added()->toDate())?></p>
+			    <p class="date-added">Added <?= date('d/m/Y', $logbook->added()->toDate())?></p>
 			    <p class="label"><span class="chapter-number"><?= $chapter->num()?></span><span class="icon"><img src="<?= $site->url()?>/assets/stories.svg"></span><?= $story->label() ?></p>
 			    <div class="meta">
 				    <div class="contributors">
@@ -56,7 +69,7 @@
 					    	</ul>
 				    	<?php endforeach ?>
 				    </div>
-<!-- 				    <div class="location">
+					<!--<div class="location">
 				    	<h5>Location</h5>
 				    	<p class="city"><?= $story->location()?></p>
 				    	<p class="coordinates">
@@ -96,20 +109,19 @@
 				   					<figcaption><?= $text->value->caption ?></figcaption>
 				   				</figure>
 				   			<?php elseif($text->type == 'embed'):?>
-	<!-- 			   				<iframe width="200" height="113" src="<?= $text->value ?>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe> -->
 				   			<?php else: ?>
 				   					
 				   			<?php endif; ?>
 				   			
 				   		<?php endforeach ?>
 				   	<?php endforeach ?>
-				  <?php endforeach ?>
-				</div>
+				  </div>
+				<?php endforeach ?>
 			<!--  /////// L O G B O O K /////// -->
 			<?php elseif($chapter->intendedTemplate() == "logbook"):?>
 				<?php foreach ($chapter->children() as $logbook): ?>
 			    <h1><?= $logbook->title() ?></h1>
-			    <p class="date-added">Added <?= date('m/d/Y', $logbook->added()->toDate())?></p>
+			    <p class="date-added">Added <?= date('d/m/Y', $logbook->added()->toDate())?></p>
 			    <p class="label"><span class="chapter-number"><?= $chapter->num()?></span><span class="icon"><img src="<?= $site->url()?>/assets/logbooks.svg"></span><?= $logbook->label() ?></p>
 			    <!-- fetch article tags -->
 			    <div class="meta">
@@ -144,7 +156,7 @@
 			   			<div class="logbook-article">			   			
 					   		<h2><?= $article->title?></h2>
 					   		<?php //print_r($article[0]->body)?>
-					   		<div class="logbook-content">
+					   		<div class="logbook-content" style="word-spacing: <?=$chapter->ajustements()?>px">
 					   			<?php $textVal = '';?>
 							   	<!-- fetch content of article -->
 							   	<?php foreach($article->body as $textArray):?>
@@ -170,19 +182,42 @@
 			   	<?php endforeach ?>
 			  <?php endforeach; ?>
 			<?php endif; ?>
-			<!-- create new page from atlas website -->
+			
+			<!-- if link in page is empty -->
 		<?php else:?>
-			<h1><?= $chapter->title() ?></h1>
-			<h2><?= $chapter->subtitle() ?></h2>
-			<section class="content">
-				<?= $chapter->text()->toBlocks() ?>
-			</section>
+			<!-- create new page from authors pas -->
+			<?php if($chapter->intendedTemplate() == "authors"):?>
+				<div class="author-page">
+					<h1><?= $chapter->title() ?></h1>
+					<?php foreach ($chapter->children() as $authors): ?>
+						<div class="content">
+					    <h2><?= $authors->title() ?></h2>
+					    <h3><?= $authors->subtitle() ?></h3>
+					    <?= $authors->bio() ?>
+				  	</div>
+					<?php endforeach ?>
+				</div>
+			<?php else:?>
+				<div class="default-page">
+					<!-- create new page from atlas website -->
+					<h1><?= $chapter->title() ?></h1>
+					<h2><?= $chapter->subtitle() ?></h2>
+					<section class="content">
+						<?= $chapter->text()->toBlocks() ?>
+					</section>
+				</div>
+			<?php endif?>
 		<?php endif?>
 	</div>	
 <?php endforeach ?>
-
 	<div class="backcover">
-		<?= $coverPage->summary()->kt() ?>
+		<div class="pixels-grid">
+			<div id="backcover-pixels-grid-inner"></div>
+		</div>
+		<div class="backcover-summary">
+			<?= $coverPage->summary()->kt() ?>
+		</div>
+		
 	</div>
 
 <?php snippet('footer'); ?>

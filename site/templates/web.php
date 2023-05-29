@@ -161,20 +161,35 @@
 				   	<?php endforeach ?>
 				  <?php endforeach; ?>
 				<?php endif; ?>
-				<!-- create new page from atlas website -->
+			<!-- if link in page is empty -->
 			<?php else:?>
-				<h1><?= $chapter->title() ?></h1>
-				<h2><?= $chapter->subtitle() ?></h2>
-				<section class="content">
-					<?= $chapter->text()->toBlocks() ?>
-				</section>
+				<!-- create new page from authors pas -->
+				<?php if($chapter->intendedTemplate() == "authors"):?>
+					<div class="author-page">
+						<h1><?= $chapter->title() ?></h1>
+						<?php foreach ($chapter->children() as $authors): ?>
+							<div class="content">
+						    <h2><?= $authors->title() ?></h2>
+						    <h3><?= $authors->subtitle() ?></h3>
+						    <?= $authors->bio() ?>
+					  	</div>
+						<?php endforeach ?>
+					</div>
+				<?php else:?>
+					<!-- create new page from atlas website -->
+					<div class="default-page">
+						<!-- create new page from atlas website -->
+						<h1><?= $chapter->title() ?></h1>
+						<h2><?= $chapter->subtitle() ?></h2>
+						<section class="content">
+							<?= $chapter->text()->toBlocks() ?>
+						</section>
+					</div>
+				<?php endif?>
 			<?php endif?>
 		</div>	
 	<?php endforeach ?>
 </main>
 
-	<div class="backcover">
-		<?= $coverPage->summary()->kt() ?>
-	</div>
 
 <?php snippet('footer'); ?>
