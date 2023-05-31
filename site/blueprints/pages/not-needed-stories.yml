@@ -1,0 +1,28 @@
+title: Stories
+
+columns:
+  main:
+    width: 2/3
+    sections:
+      fields:
+        type: fields
+        fields:
+          subtitle: 
+            label: Subtitle
+            type: text
+          text: 
+            label: Content
+            type: blocks
+            fieldsets:
+              - heading
+              - text
+              - list
+              - gallery
+              - image
+  sidebar:
+    width: 1/3
+    sections:
+      files:
+        label: Images
+        type: files
+

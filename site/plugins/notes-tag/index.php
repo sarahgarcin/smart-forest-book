@@ -9,7 +9,7 @@ Kirby::plugin('sarahgarcin/notes-tag', [
       'html' => function($tag) {
         $note = $tag->attr('note');
 
-        return '<span class="margin-note">'.$note.'</span>';
+        return '<span class="footnote">'.$note.'</span>';
 
       }
     ]

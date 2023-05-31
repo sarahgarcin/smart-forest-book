@@ -1,0 +1,13 @@
+Title: Introduction
+
+----
+
+Subtitle: 
+
+----
+
+Text: [{"content":{"text":"<p>Seed networks have been established in diverse regions of Brazil as grassroots initiatives for community participation in native plant material supply and landscape restoration activities. These community-led strategies involve linking communities that adopted several practices and technologies for seed collection, processing and storage with regional restoration projects.<\/p>"},"id":"1cd4bac7-ebfa-49a7-897d-30c912cc88aa","isHidden":false,"type":"bigtext"}]
+
+----
+
+Uuid: Fx9SyOvoxes7M1fA

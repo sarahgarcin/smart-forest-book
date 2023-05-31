@@ -1,5 +1,13 @@
 title: Chapter
 
+options:
+  changeTemplate:
+    - default
+    - story
+    - logbook
+    - radio
+    - authors
+
 columns:
   main:
     width: 2/3

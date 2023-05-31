@@ -1,9 +1,0 @@
-Caption: Acoustic monitoring device 'AudioMoth' is an acoustic monitoring device that was developed through initial research with cicadas. Image from Hill et al. 2017
-
-----
-
-Sort: 1
-
-----
-
-Uuid: ga7bQUUtTszUbGSN

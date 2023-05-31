@@ -4,7 +4,7 @@ sections:
   fields:
     label: Content
     type: pages
-    help: Create a new book, add a cover and an inside page
+    help: Create a new book, add a cover, an inside page and a web (to create a web version)
     template: 
       - cover
       - inside

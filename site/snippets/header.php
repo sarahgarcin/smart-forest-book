@@ -7,9 +7,11 @@
 	
 	<?php if(!$page->isHomePage() && $page->intendedTemplate() !="web"):?>
 		<?= css("assets/preview.css")?>
+		<?= css("assets/interface-0.1.css")?>
 	<?php endif;?>
 	<?= css("assets/style.css")?>
 	<?= css("assets/web.css")?>
+	<?= js("assets/typopo.min.js")?>
 	<?php if(!$page->isHomePage() && $page->intendedTemplate() !="web"):?>
 		<?= js("assets/paged.polyfill.js")?>
 		<?= js("assets/script.js")?>

@@ -1,0 +1,13 @@
+Title: Article
+
+----
+
+Subtitle: 
+
+----
+
+Text: [{"content":{"text":"<p>Indigenous peoples, local communities, and social and environmental organisations are combining forest knowledges developed over generations with emerging digital modes of communication, mapping, and monitoring in order to build capacity for self-determination in forest governance and relation in the context of ongoing colonialisms and environmental change. The examples in this story sustain and adapt longstanding forest practices and socio-ecological relations variously through digital platforms, GIS mapping, aerial imaging, and NFTs. They mobilise these technologies towards land, data, and epistemic sovereignty against persistent and renewed forms of dispossession and environmental injustice. These projects reveal the complex, often contradictory processes of navigating uneven state, neoliberal, and Indigenous modes of environmental governance in Indigenous and community efforts to reclaim and restore more-than-human forest environments.<\/p>"},"id":"3b4db99c-8cac-442f-b87b-9407998f8db2","isHidden":false,"type":"bigtext"},{"content":{"text":"<p><strong>Cosmopolitical forests<\/strong><\/p><p>In a <a href=\"https:\/\/www.repository.cam.ac.uk\/handle\/1810\/339293\" rel=\"noopener noreferrer\"><u>forthcoming article<\/u><\/a>, Smart Forests researchers propose a cosmopolitical approach to forests that attends to the multiplicity of beings, stories, and socio-technical practices that constitute ways of knowing and inhabiting forests as pluralistic assemblages. The article builds on scholarship that presents forests as political entities constituted through territorial governance strategies and technologies of measurement, classification, and calculation. As Indigenous scholars and activists have argued, such modes of datafication have often been operationalised for the material and epistemic containment and extraction of Indigenous lands, bodies, and knowledges (Tuhiwai Smith, 1999). In this context, the Indigenous projects discussed in this story highlight different modes through which technologies materialise multiple, uneven and frictional forest worlds.<\/p>"},"id":"60c9f070-79fb-44b2-9111-f9b79e419058","isHidden":false,"type":"text"}]
+
+----
+
+Uuid: VbxmY7s495bt2HO5

@@ -18,6 +18,7 @@
 --textfont: "marr", sans-serif;
 --textsize: 10.5pt;
 --leftmargin: 22mm;
+--baseline: 20px;
 }
 
 /* --------- Paramètres de base ---------- */
@@ -107,7 +108,7 @@ h2, h3{
 	text-transform: uppercase;
 }
 
-p{
+p, li{
 	text-align: justify;
 	hyphens: auto;
 	/*text-indent: 0.5cm;*/
@@ -123,6 +124,10 @@ a{
 	white-space: -o-pre-wrap; /* Opera 7 */    
 	word-wrap: break-word; /* Internet Explorer 5.5+ */
 }
+
+/*a::after {
+  content: " (" attr(href) ")";
+}*/
 
 ul, figure, ol{
 	margin: 0;
@@ -273,13 +278,13 @@ body.home .books-list li a:hover{
 	top: 12cm;
 }
 
-.cover #authors-index #list-index-generated{
+.cover #authors-index #list-index-generated-author-index{
 	display: flex;
 	justify-content: center;
 	flex-wrap: wrap;
 }
 
-.cover #authors-index #list-index-generated li{
+.cover #authors-index #list-index-generated-author-index li{
 	display: block;
 }
 
@@ -302,15 +307,8 @@ body.home .books-list li a:hover{
 	content: ")";
 }
 
-#list-index-generated{
-
-}
-
-.cover #list-index-generated li{
-	background: #FFF;
-}
-
-#list-index-generated li{
+#list-index-generated-author-index li,
+#list-index-generated-book-index li{
 	background: transparent;
 	padding: 2mm 2mm 1.5mm 2mm;
 	border-radius: 40px;
@@ -323,6 +321,10 @@ body.home .books-list li a:hover{
 	font-size: 8pt;
 	font-family: var(--titlefont);
 	/*border: 0.05em solid var(--green);*/
+}
+
+#list-index-generated-author-index li{
+	background: #FFF;
 }
 
 .index-value{ display: inline-block; }
@@ -588,19 +590,20 @@ body.home .books-list li a:hover{
 	/*margin-left: var(--leftmargin)*/
 }
 
-.chapter .label .chapter-number{
-  padding: 0.5mm 1.8mm 0.1mm 1.8mm;
+.chapter-number{
+  padding: 0.5mm 1.5mm 0mm 1.5mm;
   background: var(--yellow);
   color: #000;
   font-family: var(--textfont);
   border-radius: 100%;
-  font-size: 10pt;
+  font-size: 9pt;
   display: inline-block;
   vertical-align: top;
   margin-right: 1mm;
+  margin-top: 0.5mm;
 }
 
-.chapter .label .icon{
+.icon{
 	margin-right: 2mm; 
 	width: 4mm;
 	display: inline-block;
@@ -608,7 +611,7 @@ body.home .books-list li a:hover{
 	color: var(--green);*/
 }
 
-.chapter .label .icon img{
+.icon img{
 	vertical-align: top;
   padding-top: 1mm;
 }
@@ -661,57 +664,44 @@ body.home .books-list li a:hover{
 }
 
 /* ----------- FOOTNOTES ----------- */
+.pagedjs_footnote_area{
+	margin-top: calc(var(--margin) *2);
+}
 
-.margin-note {
-	word-break: break-word;
-	padding-right: 4mm;
-	padding-left: 8.5mm;
+
+.footnote {
+  float: footnote;
+  word-break: break-word;
 	line-height: 1.35;
 	font-size: 8pt;
 	text-align: left;
-	margin-top: -4mm;
-	hyphens: manual;
 	font-family: var(--titlefont);
-	font-weight: normal;
-	top: auto;
-	text-indent: 0cm;
-	hyphens: auto;
-	color: var(--green);
+	hyphens: none;
+	color: var(--grey);
 }
 
-.margin-note a{
-	color: var(--green);	
+.footnote a{
+	color: var(--grey);
 }
 
-.note-call{
-	font-size: 0.7em;
-	font-weight: bold;
+@page {
+  @footnote {
+    float: bottom;
+  }
 }
 
-.note-marker{
-	border: 1px solid var(--green);
-	border-radius: 20px;
-	padding: 0cm 0.1cm;
-	margin-right: 0.1cm;
-	margin-left: -0.5cm;
+::footnote-call {
+  content: counter(footnote, loweralpha);
+  line-height: 0;
+  font-size: 0.7em;
+  font-weight: bold;
 }
 
-
-.footnote-p sup{
-	font-size: 5pt;
-	top:0;
-}
-
-.note-call_footnote-p{
-	display: none;
-}
-
-.note-pointer{
-	font-size: 7pt;
-	pointer-events: none;
-	color: var(--green);
-	vertical-align: bottom;
-	margin-right: 4px;
+::footnote-marker {
+  content: counter(footnote, loweralpha) ". ";
+  font-size: 7pt;
+  color: var(--grey);
+  line-height: 0;
 }
 
 /* ------- D E F A U L T  ---------- */
@@ -726,13 +716,18 @@ figure{
 }
 
 figcaption{
-	margin-top: 12px;
+	margin-top: calc(var(--baseline) / 2);
 }
 
 figcaption p, figcaption{
 	text-align : left;
 	font-size: 7pt !important; 
 	color: var(--grey);
+	line-height: 1.45; 
+	hyphens:none; 
+	/*margin-bottom: calc(var(--baseline) + (var(--baseline) / 2));*/
+  word-spacing: -0.7px;
+  letter-spacing: 0.02em;
 }
 
 /* ------- L O G B O O K  ---------- */
@@ -759,6 +754,8 @@ figcaption p, figcaption{
 	text-transform: none;
 	margin-top: 0;
 	font-family: var(--textfont);
+	line-height: 20px;
+	margin-bottom: var(--baseline);
 }
 
 .logbook-article{
@@ -766,19 +763,24 @@ figcaption p, figcaption{
 	page-break-after: always;
 }
 
-.logbook-content p{
+.logbook-content p, .logbook-content li{
 	font-size: var(--textsize);
 	margin-top:0;
-	margin-bottom: 0.5cm;
+	margin-bottom: 20px;
 	word-spacing: -0.7px;
 	letter-spacing: 0.02em;
+}
+
+.logbook-content ul{
+	padding-left: 1cm;
 }
 
 .logbook figure {
 	width: 100%;
 	-webkit-filter: grayscale(100%);
 	filter: grayscale(100%);
-	margin: 0.5cm 0;
+	/*margin: 0.5cm 0;*/
+	margin-bottom: 40px;
 }
 
 
@@ -822,7 +824,7 @@ figcaption p, figcaption{
 .meta{
 	display: flex; 
 	margin-top: 2mm;
-	margin-bottom: 2cm;
+	margin-bottom: 2.3cm;
 }
 
 .meta h5{
@@ -838,6 +840,7 @@ figcaption p, figcaption{
 	list-style: none;
 	font-size: 8pt;
 	line-height: 1.4;
+	text-align: left;
 }
 
 .meta .contributors{
@@ -866,12 +869,16 @@ figcaption p, figcaption{
 	/*float: right;*/
 }
 
-.story-content p{
+.story-content p, .story-content li{
 	font-size: var(--textsize);
 	margin-top: 0; 
 	margin-bottom: 0.5cm;
 	word-spacing: -0.7px;
 	letter-spacing: 0.02em;
+}
+
+.story-content ul{
+	padding-left: 1cm;
 }
 
 .story-content h3{
@@ -892,7 +899,8 @@ figcaption p, figcaption{
 .story-content figure{
 	-webkit-filter: grayscale(100%);
 	filter: grayscale(100%);
-	margin: 0.5cm 0cm;
+	margin-bottom: 40px;
+	/*margin: 0.5cm 0cm;*/
 	/*float: left;*/
 	/*position: absolute;*/
   /*width: 48%;*/
@@ -939,6 +947,7 @@ figcaption p, figcaption{
     font-size: 14pt;
     color: var(--green); 
     line-height: 1.2;
+    text-align: left;
 }
 
 #table-of-contents li a{

@@ -1,0 +1,13 @@
+Title: Credits
+
+----
+
+Subtitle: 
+
+----
+
+Text: [{"content":{"text":"<p>For more information on the <a href=\"https:\/\/www.smartforests.net\/\" rel=\"noopener noreferrer\"><u>Smart Forests<\/u><\/a> project, contact <u><a href=\"mailto:jennifer@planetarypraxis.org\">Prof Jennifer Gabrys<\/a><\/u>.<\/p><p><a href=\"https:\/\/twitter.com\/planetarypraxis\" rel=\"noopener noreferrer\"><u>Follow us on Twitter<\/u><\/a> for the latest updates on the Smart Forests project and the <a href=\"https:\/\/planetarypraxis.org\/\" rel=\"noopener noreferrer\"><u>Planetary Praxis<\/u><\/a> research group.<\/p><p>This project has received funding from the European Research Council (ERC) under the European Union\u2019s Horizon 2020 research and innovation programme (Grant Agreement No. 866006).<\/p><p>The Smart Forests Atlas is free to use for non-commercial purposes (with attribution) under a <a href=\"https:\/\/creativecommons.org\/licenses\/by-nc-sa\/4.0\/\" rel=\"noopener noreferrer\"><u>CC BY-NC-SA 4.0<\/u><\/a> license. For more information, please read our <a href=\"https:\/\/github.com\/planetarypraxis\/smartforests\/blob\/main\/LICENSE\" rel=\"noopener noreferrer\"><u>licence<\/u><\/a>.<\/p><p>Thanks to\u2026<\/p><p>Number of copies: 1000<br>Fonts: Monaco, Marr<br>Design process: web to print, API, pagedjs<br>Graphic design: Angeline Ostinelli and Sarah Garcin<\/p>"},"id":"943d66e9-8503-46a7-854a-52a2eddedcd4","isHidden":false,"type":"text"}]
+
+----
+
+Uuid: YIhXWNOgEgj3f5T9

@@ -1,5 +1,13 @@
 title: Authors
 
+options:
+  changeTemplate:
+    - default
+    - story
+    - logbook
+    - radio
+    - authors
+
 sections:
   fields:
     label: Info

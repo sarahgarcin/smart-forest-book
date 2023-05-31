@@ -6,8 +6,8 @@ sections:
     type: pages
     template: 
       - default
-      - existing
       - story
       - logbook
+      - radio
       - authors
 

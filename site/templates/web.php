@@ -1,6 +1,6 @@
 <?php snippet('header'); ?>
-<?php $coverPage = $page->parent()->children()->filterBy('template', 'cover')->first()?>
-<?php $chapters = $page->parent()->children()->filterBy('template', 'inside')->children()->listed();?>
+<?php $coverPage = $page->parent()->children()->filterBy('intendedTemplate', 'cover')->first()?>
+<?php $chapters = $page->parent()->children()->filterBy('intendedTemplate', 'inside')->children()->listed();?>
 
 <header>
 	<h1><?= $coverPage->titleCouv() ?></h1>

@@ -1,12 +1,11 @@
 <?php snippet('header'); ?>
-<?php $coverPage = $page->children()->filterBy('template', 'cover')->first()?>
-<?php $chapters = $page->children()->filterBy('template', 'inside')->children()->listed();?>
+<?php $coverPage = $page->children()->filterBy('intendedTemplate', 'cover')->first()?>
+<?php $chapters = $page->children()->filterBy('intendedTemplate', 'inside')->children()->listed();?>
 
 <div class="cover">
 	<div class="pixels-grid">
 		<div id="pixels-grid-inner"></div>
 	</div>
-	<!-- <canvas id="generated-image-for-cover" width=576 height=864></canvas> -->
 	<div id="authors-index"></div>
 	<h1><?= $coverPage->titleCouv() ?></h1>
 	<h2><span>Smart</span><span>Forests</span><span>Book</span></h2>
@@ -37,7 +36,7 @@
 				</figure>
 			<?php endif;?>
 			<!-- /////// S T O R Y  /////// -->
-			<?php if($chapter->intendedTemplate() == "story"):?>
+			<?php if($chapter->intendedTemplate() == "story" || $chapter->intendedTemplate() == "radio"):?>
 				<?php foreach ($chapter->children() as $story): ?>
 					<figure class="image-cover">
 			    	<img src="<?= $story->cover() ?>" alt="">
@@ -46,7 +45,7 @@
 			<?php endif ?>
 		<?php endif ?>
 	</div>
-	<div class="chapter <?= $chapter->uid() ?> <?php if($chapter->intendedTemplate() == "story"): echo "story"; elseif($chapter->intendedTemplate() == "logbook"): echo "logbook"; else: echo "default"; endif; ?>">
+	<div class="chapter <?= $chapter->uid() ?> <?php if($chapter->intendedTemplate() == "story"): echo "story"; elseif($chapter->intendedTemplate() == "logbook"): echo "logbook"; elseif($chapter->intendedTemplate() == "radio"): echo "radio"; else: echo "default"; endif; ?>">
 		<!-- get chapter from atlas website -->
 		<?php if($chapter->link()->isNotEmpty()):?>
 			<!-- /////// S T O R Y  /////// -->
@@ -113,6 +112,46 @@
 				   					
 				   			<?php endif; ?>
 				   			
+				   		<?php endforeach ?>
+				   	<?php endforeach ?>
+				  </div>
+				<?php endforeach ?>
+			<!-- ///////// R A D I O /////////// -->
+			<?php elseif($chapter->intendedTemplate() == "radio"):?>
+				<?php foreach ($chapter->children() as $radio): ?>
+			    <h1><?= $radio->title() ?></h1>
+			    <p class="label"><span class="chapter-number"><?= $chapter->num()?></span><span class="icon"><img src="<?= $site->url()?>/assets/radio.svg"></span><?= $radio->label() ?></p>
+			    <div class="meta">
+				    <!-- fetch article tags -->
+				    <div class="tags">
+				    	<h5>Tags</h5>
+				    	<ul>
+					    <?php foreach($radio->tags() as $tags):?>
+					    	<?php foreach($tags as $tag):?>
+					    		<li class="book-index" data-book-index="<?= $tag ?>"><?= $tag ?></li> 
+					    	<?php endforeach ?>
+					    <?php endforeach ?>
+					  	</ul>
+				   	</div>
+			   	</div>
+			   	<div class="story-content radio-content">
+				   	<!-- fetch content of article -->
+				   	<?php foreach($radio->text() as $textArray):?>
+				   		<?php foreach($textArray as $text):?>
+				   			<!-- fetch text content -->
+				   			<?php if($text->type == 'text'):?>
+				   				<div class="story-content-text radio-content-text">
+				   					<?= $text->value ?>
+				   				</div>
+				   			<!-- fetch image content -->
+				   			<!-- trouver comment afficher les images -->
+				   			<?php elseif($text->type == 'image'):?>
+				   				<figure>
+				   					<img src="<?= $text->value->image->id->meta->download_url ?>" alt="<?= $text->value->image->id->title ?>">
+				   					<figcaption><?= $text->value->caption ?></figcaption>
+				   				</figure>
+				   			<?php else: ?>
+				   			<?php endif; ?>
 				   		<?php endforeach ?>
 				   	<?php endforeach ?>
 				  </div>

@@ -1,5 +1,13 @@
 title: Story
 
+options:
+  changeTemplate:
+    - default
+    - story
+    - logbook
+    - radio
+    - authors
+
 columns:
   main:
     width: 2/3
@@ -7,16 +15,6 @@ columns:
       fields:
         type: fields
         fields:
-          pics: 
-            label: Pictures
-            type: files
-          summary: 
-            label: Table of contents
-            type: structure
-            fields:
-              title: 
-                label: Title
-                type: text
           link: 
             label: Link of the article
             type: text

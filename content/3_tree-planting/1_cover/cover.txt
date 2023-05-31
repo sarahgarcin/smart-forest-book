@@ -1,0 +1,21 @@
+Title: Cover
+
+----
+
+Titlecouv: Tree planting
+
+----
+
+Version: 29-05-2023 — V1
+
+----
+
+Imagecouv: 
+
+----
+
+Summary: Tree-planting is the process of transplanting tree seedlings, generally for forestry, land reclamation, or landscaping purposes. It differs from the transplantation of larger trees in arboriculture and from the lower-cost but slower and less reliable distribution of tree seeds. Trees contribute to their environment over long periods of time by providing oxygen, improving air quality, climate amelioration, conserving water, preserving soil, and supporting wildlife. During the process of photosynthesis, trees take in carbon dioxide and produce the oxygen we breathe.
+
+----
+
+Uuid: NRkFsYgUDFMjcv05

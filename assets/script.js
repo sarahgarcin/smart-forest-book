@@ -12,6 +12,18 @@
 
 // Paged.registerHandlers(createAuthorsPage);
 
+//  ----------------- MICRO TYPOGRAPHY ------------------
+// class microtypography extends Paged.Handler {
+//   constructor(chunker, polisher, caller) {
+//     super(chunker, polisher, caller);
+//   }
+
+//   beforeParsed(content){ 
+//     fixTypos(string, locale, [configuration])
+//     $('#textarea').val(fixTypos($('#textarea').val(), 'en-us'));
+//   }
+// }
+// Paged.registerHandlers(microtypography);
 
 
 //  ----------------- COVER IMAGE ------------------
@@ -62,29 +74,6 @@ function generateGrid(content, el){
 
 
 function colorPicker(){
-  var items = Array(
-    'rgb(0, 100, 61)',
-    'rgb(0, 100, 61)',
-    'rgb(0, 100, 61)',
-    'rgb(0, 100, 61)',
-    'rgb(0, 100, 61)',
-    'rgb(0, 100, 61)',
-    'rgb(0, 100, 61)',
-    'rgb(0, 100, 61)',
-    'rgb(0, 100, 61)',
-    'rgb(0, 100, 61)',
-    'rgb(88, 157, 134)',
-    'rgb(88, 157, 134)',
-    'rgb(88, 157, 134)',
-    'rgb(88, 157, 134)',
-    'rgb(184, 209, 200)',
-    'rgb(184, 209, 200)',
-    'rgb(184, 209, 200)',
-    // 'rgb(240, 246, 243)',
-    // 'rgb(142, 197, 0)',
-    // 'rgb(197, 220, 0)',
-    // 'rgb(255, 221, 50)'
-  );
   // var items = Array(
   //   'rgb(0, 100, 61)',
   //   'rgb(0, 100, 61)',
@@ -96,18 +85,41 @@ function colorPicker(){
   //   'rgb(0, 100, 61)',
   //   'rgb(0, 100, 61)',
   //   'rgb(0, 100, 61)',
-  //   'rgb(0, 112, 32)',
-  //   'rgb(0, 112, 32)',
-  //   'rgb(0, 112, 32)',
-  //   'rgb(25, 145, 0)',
-  //   'rgb(25, 145, 0)',
-  //   'rgb(25, 145, 0)',
-  //   'rgb(25, 145, 0)',
-  //   'rgb(69, 173, 0)',
+  //   'rgb(88, 157, 134)',
+  //   'rgb(88, 157, 134)',
+  //   'rgb(88, 157, 134)',
+  //   'rgb(88, 157, 134)',
+  //   'rgb(184, 209, 200)',
+  //   'rgb(184, 209, 200)',
+  //   'rgb(184, 209, 200)',
+  //   // 'rgb(240, 246, 243)',
   //   // 'rgb(142, 197, 0)',
   //   // 'rgb(197, 220, 0)',
   //   // 'rgb(255, 221, 50)'
   // );
+  var items = Array(
+    'rgb(0, 100, 61)',
+    'rgb(0, 100, 61)',
+    'rgb(0, 100, 61)',
+    'rgb(0, 100, 61)',
+    'rgb(0, 100, 61)',
+    'rgb(0, 100, 61)',
+    'rgb(0, 100, 61)',
+    'rgb(0, 100, 61)',
+    'rgb(0, 100, 61)',
+    'rgb(0, 100, 61)',
+    'rgb(0, 112, 32)',
+    'rgb(0, 112, 32)',
+    'rgb(0, 112, 32)',
+    'rgb(25, 145, 0)',
+    'rgb(25, 145, 0)',
+    'rgb(25, 145, 0)',
+    'rgb(25, 145, 0)',
+    'rgb(69, 173, 0)',
+    // 'rgb(142, 197, 0)',
+    // 'rgb(197, 220, 0)',
+    // 'rgb(255, 221, 50)'
+  );
   var item  = items[Math.floor(Math.random()*items.length)];
   return item;
 }
@@ -126,13 +138,15 @@ class bookIndex extends Paged.Handler {
     createIndex({
       spanClassIndex: 'book-index',
       indexElement: '#book-index',  
+      idToGive : 'book-index', 
       alphabet: false,
       randomPos : true,
       content : content       
     });
     createIndex({
       spanClassIndex: 'author-index',
-      indexElement: '#authors-index',  
+      indexElement: '#authors-index', 
+      idToGive : 'author-index', 
       alphabet: false,
       randomPos : false,
       content : content       
@@ -173,7 +187,7 @@ function createIndex(config){
 
         // create id for span whithout
         num++;
-        if(indexElement.id == ''){ indexElement.id = 'book-index-' + num; }
+        if(indexElement.id == ''){ indexElement.id = config.idToGive + '-' + num; }
     }
 
 
@@ -188,7 +202,7 @@ function createIndex(config){
     // create <ul> element for the index
     let indexElementDiv = content.querySelector(config.indexElement);
     let indexUl = document.createElement("ul");
-    indexUl.id = "list-index-generated";
+    indexUl.id = "list-index-generated-" + config.idToGive;
     indexElementDiv.appendChild(indexUl); 
 
 
@@ -243,7 +257,7 @@ function createIndex(config){
         indexUl.appendChild(indexNewLi);  
     }
 
-    let indexLi = content.getElementById('list-index-generated').getElementsByClassName('list-index-element');
+    let indexLi = content.getElementById('list-index-generated-' + config.idToGive).getElementsByClassName('list-index-element');
 
     for(var n = 0; n < indexLi.length; n++){
         
@@ -318,205 +332,32 @@ class backSize extends Paged.Handler {
 Paged.registerHandlers(backSize);
 
 
-// -------------- M A R G I N     N O T E S      S C R I P T -----------------
+// -------------- URL TO FOOTNOTES SCRIPT -----------------
 
-let classNotes = "margin-note"; // ← Change the CLASS of the notes here
-let notesFloat = "left"; // ← Change the POSITION of the notes here
-
-class marginNotes extends Paged.Handler {
+class urlToFootnotes extends Paged.Handler {
   constructor(chunker, polisher, caller) {
     super(chunker, polisher, caller);
   }
 
   beforeParsed(content) {
+    let classNotes = "footnote";
 
-    let notes = content.querySelectorAll("." + classNotes);
-
-    for (let i = 0; i < notes.length; ++i) {
-
-      // Add call notes
-      var spanCall = document.createElement("sup");
-      spanCall.classList.add("note-call");
-      spanCall.classList.add("note-call_" + classNotes);
-      spanCall.dataset.noteCall = classNotes + '-' + i + 1;
-      notes[i].parentNode.insertBefore(spanCall, notes[i]);
-
-      // Add marker notes
-      var spanMarker = document.createElement("span");
-      spanMarker.classList.add("note-marker");
-      spanMarker.classList.add("note-marker_" + classNotes);
-      spanMarker.dataset.noteMarker = classNotes + '-' + i + 1;
-      notes[i].prepend(spanMarker);
-
-
-      // Hide notes to avoid rendering problems
-      notes[i].style.display = "none";
-    }
-
-
-
-    /* NOTE FLOAT ---------------------------------------------------------------------------------- */
-
-    let positionRight = 'left: calc(var(--pagedjs-pagebox-width) - var(--pagedjs-margin-left) - var(--pagedjs-margin-right) - 1px); width: var(--pagedjs-margin-right);';
-    let positionLeft = 'left: calc(var(--pagedjs-margin-left)*-1 + 4px); width: calc(var(--pagedjs-margin-left) - 4px);'
-
-    let notePosition;
-
-    switch (notesFloat) {
-      case 'inside':
-        notePosition = '.pagedjs_left_page .' + classNotes + '{' + positionRight + '} \
-          .pagedjs_right_page .' + classNotes + '{' + positionLeft + '}';
-        break;
-      case 'left':
-        notePosition = '.pagedjs_left_page .' + classNotes + '{' + positionLeft + '} \
-          .pagedjs_right_page .' + classNotes + '{' + positionLeft + '}';
-        break;
-      case 'right':
-        notePosition = '.pagedjs_left_page .' + classNotes + '{' + positionRight + '} \
-          .pagedjs_right_page .' + classNotes + '{' + positionRight + '}';
-        break;
-      default:
-        notePosition = '.pagedjs_left_page .' + classNotes + '{' + positionLeft + '} \
-          .pagedjs_right_page .' + classNotes + '{' + positionRight + '}';
-    }
-
-
-    /* SPECIFIC CSS ---------------------------------------------------------------------------------- */
-
-    addcss('\
-      body {\
-        counter-reset: callNote_' + toCamelClassNote(classNotes) + ' markerNote_' + toCamelClassNote(classNotes) + ';\
-      }\
-      \
-      .' + classNotes + '{\
-          position: absolute;\
-          text-align-last: initial;\
-          box-sizing: border-box;\
-      }\
-      \
-      .note-call_' + classNotes + ' {\
-        counter-increment: callNote_' + toCamelClassNote(classNotes) + ';\
-      }\
-      \
-      .note-call_' + classNotes + '::after {\
-        content: counter(callNote_' + toCamelClassNote(classNotes) + ');\
-      }\
-      \
-      .note-marker_' + classNotes + ' {\
-          counter-increment: markerNote_' + toCamelClassNote(classNotes) + ';\
-      }\
-      .note-marker_' + classNotes + '::before {\
-        content: counter(markerNote_' + toCamelClassNote(classNotes) + ') "";\
-      }\
-    ' + notePosition);
-
-
-  } /* end beforeParsed*/
-
-
-  afterPageLayout(pageElement, page, breakToken) {
-    let notes = pageElement.querySelectorAll("." + classNotes);
-    let noteOverflow = false;
-
-    let notesHeightAll = [];
-
-    if (typeof (notes) != 'undefined' && notes != null && notes.length != 0) {
-
-      for (let n = 0; n < notes.length; ++n) {
-        // Display notes of the page 
-        notes[n].style.display = "inline-block";
-        // Add height of the notes to array notesHeightAll 
-        let noteHeight = notes[n].offsetHeight;
-        notesHeightAll.push(noteHeight);
-        // Add margins of the notes to array notesHeightAll 
-        if (n >= 1) {
-          let margins = biggestMargin(notes[n - 1], notes[n]);
-          notesHeightAll.push(margins);
-        }
+    // add classNotes class to all url in text
+    let aInP = content.querySelectorAll("p a");
+    console.log(aInP);
+    for (let i = 0; i < aInP.length; ++i) {
+      let ahref = aInP[i].getAttribute("href");
+      if(ahref != null){
+        let spanUrlNotes = document.createElement("span");
+        spanUrlNotes.classList.add(classNotes);
+        spanUrlNotes.innerHTML = ahref;
+        aInP[i].parentNode.insertBefore(spanUrlNotes, aInP[i].nextSibling);
       }
-
-
-      /* FIT PAGE ------------------------------------------------------------------------------------- */
-
-      // Calculate if all notes fit on the page;
-      let reducer = (accumulator, currentValue) => accumulator + currentValue;
-      let allHeight = notesHeightAll.reduce(reducer);
-      let maxHeight = pageElement.querySelectorAll(".pagedjs_page_content")[0].offsetHeight;
-
-      if (allHeight > maxHeight) {
-        // console.log("doesn't fit");
-
-        /* IF DOESN'T FIT ----------------------------------------------------------------------------- */
-
-        // positions all the notes one after the other starting from the top
-        notes[0].style.top = parseInt(window.getComputedStyle(notes[0]).marginBottom, 10) * -1 + "px";
-        for (let a = 1; a < notes.length; ++a) {
-          let notePrev = notes[a - 1];
-          let newMargin = biggestMargin(notePrev, notes[a]);
-          let newTop = notePrev.offsetTop + notePrev.offsetHeight - marginNoteTop(notes[a]) + newMargin + 5 ;
-          notes[a].style.top = newTop + "px";
-        }
-        // alert
-        let pageNumber = pageElement.dataset.pageNumber;
-        // alert("Rendering issue \n ☞ A marginal note overflow on page " + pageNumber + " (this is because there is too many on this page and paged.js can't breaks notes between pages for now.)");
-        noteOverflow = true;
-
-      } else {
-        // console.log("fit");
-        /* PUSH DOWN ---------------------------------------------------- */
-        for (let i = 0; i < notes.length; ++i) {
-          if (i >= 1) {
-            let noteTop = notes[i].offsetTop;
-            let notePrev = notes[i - 1];
-            let newMargin = biggestMargin(notes[i], notePrev);
-            let notePrevBottom = notePrev.offsetTop - marginNoteTop(notePrev) + notePrev.offsetHeight + newMargin + 5;
-            // Push down the note to bottom if it's over the previous one 
-            if (notePrevBottom > noteTop) {
-              // console.log("overflow");
-              notes[i].style.top = notePrevBottom +  "px";
-            }
-          }
-        }
-
-        /* PUSH UP ---------------------------------------------- */
-
-        // Height of the page content 
-        let contentHeight = pageElement.querySelectorAll(".pagedjs_page_content")[0].querySelectorAll("div")[0].offsetHeight;
-
-        // Check if last note overflow 
-        let nbrLength = notes.length - 1;
-        let lastNote = notes[nbrLength];
-        let lastNoteHeight = lastNote.offsetHeight + marginNoteTop(lastNote);
-        let noteBottom = lastNote.offsetTop + lastNoteHeight;
-
-        if (noteBottom > contentHeight) {
-
-          // Push up the last note 
-          lastNote.style.top = contentHeight - lastNoteHeight - 13 + "px";
-
-          // Push up previous note(s) if if it's over the note
-          for (let i = nbrLength; i >= 1; --i) {
-            let noteLastTop = notes[i].offsetTop;
-            let notePrev = notes[i - 1];
-            let notePrevHeight = notePrev.offsetHeight;
-            let newMargin = biggestMargin(notePrev, notes[i]);
-            let notePrevBottom = notePrev.offsetTop + notePrev.offsetHeight + newMargin + 13;
-            if (notePrevBottom > noteLastTop) {
-              notePrev.style.top = notes[i].offsetTop - marginNoteTop(notePrev) - notePrevHeight - newMargin - 17 + "px";
-            }
-          }
-
-        } /* end push up */
-
-      }
-
     }
-  }/* end afterPageLayout*/
-
+  }
 }
 
- Paged.registerHandlers(marginNotes);
-
+ Paged.registerHandlers(urlToFootnotes);
 
 
 /* FUNCTIONS -------------------------------------------------------------------------------------- 
@@ -581,7 +422,7 @@ function createToc(config){
         }
 
         // Create the element
-        tocNewLi.innerHTML = '<a href="#' + tocElement.id + '">' + tocElement.innerHTML + '</a>';
+        tocNewLi.innerHTML = '<span class="chapter-number">'+i+'</span><span class="icon"><img src="assets/logbooks.svg"></span><a href="#' + tocElement.id + '">' + tocElement.innerHTML + '</a>';
         tocUl.appendChild(tocNewLi);  
     }
 
